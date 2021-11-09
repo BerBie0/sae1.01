@@ -10,4 +10,3 @@ def allPathR(lst):
 
 
 allPathR([1,2,3])
-print(test)
