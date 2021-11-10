@@ -146,6 +146,26 @@ def allPath(coord):
             
     return res
 
+def allPathR2(coord):
+    rows=len(coord) #y
+    res=[]
+    for a in range(1,rows+1):
+        res.append(a)
+    return res
+
+def allPathR(lst):
+
+    if len(lst)==1:
+        return [lst]
+    
+    lstRes=[]
+    for a in lst:
+        remainLst=[x for x in lst if x!=a]
+        lstRemainElement=allPathR(remainLst)
+        for b in lstRemainElement:
+            lstRes.append([a]+b)
+    return lstRes
+
 def lenPath(path, matrix):
     """[function lenPath. calculate the len of a path]
 
@@ -208,14 +228,18 @@ def main():
     
     matrix=lenBetweenAllPoints(coord)
     path=allPath(coord)
+    #path2=allPathR(allPathR2(coord))
     minPath=shorterPath(path,matrix)
+    #minPath2=shorterPath(path2,matrix)
+    #print(minPath)
+    #print(minPath2)
 
     #showGrid(coord)
     #showGrid(grid)
     #showGrid(matrix)
 
     grid=addStepToGrid(grid, coord, minPath)
-    showGrid(grid)
+    #showGrid(grid)
     #print(minPath)
     
 
