@@ -249,7 +249,7 @@ def nearest(matrix):
                 min=matrix[path[a]-1][b]
                 pos=b+1
         path.append(pos)
-        lenNear += min #Add the distance between the last town and the origin
+        lenNear += matrix[path[-1]][path[-1]] #Add the distance between the last town and the origin
         a+=1
     return path
 #print(nearest(matrix))
