@@ -230,6 +230,12 @@ matrix=[
 [18.973665961010276, 9.055385138137417, 18.439088914585774, 2.0, 9.0, 4.0, 30.01666203960727, 14.035668847618199],
 [6.4031242374328485, 17.0, 11.0, 12.041594578792296, 5.0990195135927845, 14.317821063276353, 14.035668847618199, 32.64965543462902],
 ]
+
+matrix_3_3 = [
+    [30,19,7],
+    [19,21,9],
+    [7,15,23]
+]
 def nearest(matrix):
     path=[]
     min=matrix[0][0]
@@ -238,7 +244,6 @@ def nearest(matrix):
             min=matrix[a][a]
             pos=a+1
     path.append(pos)
-
     a=0
     print(path)
     while len(path)<8:
@@ -251,7 +256,9 @@ def nearest(matrix):
         path.append(pos)
         a+=1
     return path
-print(nearest(matrix))
+#print(nearest(matrix))
+print(nearest(matrix_3_3))
+
 
 def main():
     coord=randomCoord(createGrid(2,8))
