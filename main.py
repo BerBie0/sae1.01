@@ -233,20 +233,23 @@ matrix=[
 def nearest(matrix):
     path=[]
     min=matrix[0][0]
+    pos=1
     for a in range(len(matrix)):
         if matrix[a][a]<min:
             min=matrix[a][a]
             pos=a+1
+    lenNear = min
     path.append(pos)
 
     a=0
-    while len(path)<8:
+    while len(path)<len(matrix):
         min=100
         for b in range(len(matrix[path[a]-1])):
             if (matrix[path[a]-1][b]<min) and (b+1 not in path) and (matrix[path[a]-1][b]!=matrix[b][b]):
                 min=matrix[path[a]-1][b]
                 pos=b+1
         path.append(pos)
+        lenNear += min #Add the distance between the last town and the origin
         a+=1
     return path
 #print(nearest(matrix))
