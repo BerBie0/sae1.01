@@ -245,20 +245,21 @@ def nearest(matrix):
             pos=a+1
     path.append(pos)
     a=0
-    print(path)
     while len(path)<8:
         min=100
         for b in range(len(matrix[path[a]-1])):
             if (matrix[path[a]-1][b]<min) and (b+1 not in path) and (matrix[path[a]-1][b]!=matrix[b][b]):
                 min=matrix[path[a]-1][b]
                 pos=b+1
-        print(pos)
         path.append(pos)
         a+=1
     return path
 #print(nearest(matrix))
+<<<<<<< HEAD
 print(nearest(matrix_3_3))
 
+=======
+>>>>>>> 6349bb38fa6a1ef22eed9843134115fae1f65f84
 
 def main():
     coord=randomCoord(createGrid(2,8))
@@ -271,16 +272,18 @@ def main():
     #path2=allPathR(allPathR2(coord))
     minPath=shorterPath(path,matrix)
     #minPath2=shorterPath(path2,matrix)
-    #print(minPath)
+    minPathNearest=nearest(matrix)
+    print(minPath)
     #print(minPath2)
+    print(minPathNearest)
 
     #showGrid(coord)
     #showGrid(grid)
-    showGrid(matrix)
+    #showGrid(matrix)
 
     grid=addStepToGrid(grid, coord, minPath)
     #showGrid(grid)
     #print(minPath)
     
 
-#main()
+main()
