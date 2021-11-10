@@ -2,6 +2,7 @@
 import random
 import math
 
+#question 2
 def createGrid(cols, rows):
     """[Function createGrid : function create an empty array(2nd). first degree contains number of rows. second degree is an array contains number of columns. size is given in argument]
 
@@ -14,6 +15,7 @@ def createGrid(cols, rows):
     """
     return [[" " for i in range(cols)] for j in range(rows)]
 
+#question 1
 def randomCoord(grid):
     """[function randomCoord : function create an array(2nd). first degrees stands for the number of coord. second degree contains random pair of coord (x,y) array(1nd). 0<x<19, 0<y<49]
 
@@ -33,6 +35,7 @@ def randomCoord(grid):
                 grid[y][x]=random.randint(0,49)
     return grid
 
+#question 2
 def showGrid(grid):
     """[function showGrid. The function display len(grid) then back to the line]
 
@@ -43,6 +46,7 @@ def showGrid(grid):
     for y in range(rows):
         print(grid[y])
 
+#question 2
 def addCoordToGrid(coord,grid):
     """[function addCoordToGrid. the function runs through each row of the coordinate table. it then adds an x in the grid array which corresponds one after the other to the coords of the coords array]
 
@@ -59,6 +63,7 @@ def addCoordToGrid(coord,grid):
         grid[coord[y][1]][coord[y][0]]="x"
     return grid
 
+#question 3
 def lenBetweenTwoPoints(points1,points2):
     """[function lenBetweenTwoPoints. the function calculate the distance between 2 points]
 
@@ -71,6 +76,7 @@ def lenBetweenTwoPoints(points1,points2):
     """
     return math.sqrt((points1[0]-points2[0])**2 + (points1[1]-points2[1])**2)
 
+#question 3
 def lenBetweenAllPoints(coord):
     """[function lenBetweenAllPoints. the function calculte the disatance between all points and save data in a matrix which as a size of the number of coords]
 
@@ -112,6 +118,7 @@ def lenBetweenAllPoints(coord):
     return matrice
     """
 
+#question 4
 def allPath(coord):
     """[Function allPath. the function will calculate all possible path. it will exclude the paths that return to a destination already reached. for 8 points the function will calculate 8! path]
 
@@ -146,15 +153,32 @@ def allPath(coord):
             
     return res
 
+#question 6
 def allPathR2(coord):
+    """[summary]
+
+    Args:
+        coord ([array 2nd]): [array of coord]
+
+    Returns:
+        [array]: [array of number of coords]
+    """
     rows=len(coord) #y
     res=[]
     for a in range(1,rows+1):
         res.append(a)
     return res
 
+#question 6
 def allPathR(lst):
+    """[summary]
 
+    Args:
+        lst ([array]): [array of number of coords]
+
+    Returns:
+        [array 2nd]: [array of all path]
+    """
     if len(lst)==1:
         return [lst]
     
@@ -166,6 +190,7 @@ def allPathR(lst):
             lstRes.append([a]+b)
     return lstRes
 
+#question 5
 def lenPath(path, matrix):
     """[function lenPath. calculate the len of a path]
 
@@ -183,6 +208,7 @@ def lenPath(path, matrix):
     totalLen+=matrix[path[7]-1][path[7]-1]
     return totalLen
 
+#question 5
 def shorterPath(path, matrix):
     """[function shorterPath. calculate the shorter path of an array of path]
 
@@ -203,6 +229,7 @@ def shorterPath(path, matrix):
             res3=path[a]
     return res3
 
+#question 6
 def addStepToGrid(grid, coord, path):
     """[function addStepToGrid. add of running order]
 
@@ -237,6 +264,14 @@ matrix_3_3 = [
     [7,15,23]
 ]
 def nearest(matrix):
+    """[summary]
+
+    Args:
+        matrix ([array 2nd]): [matrix 8*8]
+
+    Returns:
+        [array]: [shorter path]
+    """
     path=[]
     min=matrix[0][0]
     pos=1
@@ -257,24 +292,33 @@ def nearest(matrix):
         lenNear += min
         a+=1
     lenNear += matrix[path[-1]-1][path[-1]-1] #Add the distance between the last town and the origin
-    print(lenNear)
+    #print(lenNear)
     return path
 
-print(nearest(matrix))
+#print(nearest(matrix))
 #print(nearest(matrix_3_3))
 
 
 def main():
+    #create random coord
     coord=randomCoord(createGrid(2,8))
-    
+
+    #create empty grid
     grid=createGrid(20,50)
     grid=addCoordToGrid(coord,grid)
     
+    #matrix 8*8
     matrix=lenBetweenAllPoints(coord)
+
+    #generate all path
     path=allPath(coord)
-    #path2=allPathR(allPathR2(coord))
+
+    #shortest path
+    #naive version
     minPath=shorterPath(path,matrix)
+    #recursive version
     #minPath2=shorterPath(path2,matrix)
+    #nearest
     minPathNearest=nearest(matrix)
     print(minPath)
     #print(minPath2)
@@ -284,9 +328,10 @@ def main():
     #showGrid(grid)
     #showGrid(matrix)
 
-    grid=addStepToGrid(grid, coord, minPath)
+    #grid=addStepToGrid(grid, coord, minPath)
     #showGrid(grid)
+
     #print(minPath)
     
 
-#main()
+main()
