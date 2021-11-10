@@ -254,15 +254,15 @@ def nearest(matrix):
                 min=matrix[path[a]-1][b]
                 pos=b+1
         path.append(pos)
-        lenNear += matrix[path[-1]][path[-1]] #Add the distance between the last town and the origin
+        lenNear += min
         a+=1
+    lenNear += matrix[path[-1]-1][path[-1]-1] #Add the distance between the last town and the origin
+    print(lenNear)
     return path
-#print(nearest(matrix))
-<<<<<<< HEAD
-print(nearest(matrix_3_3))
 
-=======
->>>>>>> 6349bb38fa6a1ef22eed9843134115fae1f65f84
+print(nearest(matrix))
+#print(nearest(matrix_3_3))
+
 
 def main():
     coord=randomCoord(createGrid(2,8))
@@ -289,4 +289,4 @@ def main():
     #print(minPath)
     
 
-main()
+#main()
