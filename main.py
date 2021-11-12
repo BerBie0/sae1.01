@@ -47,7 +47,8 @@ def showGrid(grid):
 
 #question 2
 def addCoordToGrid(coord,grid):
-    """[function addCoordToGrid. the function runs through each row of the coordinate table. it then adds an x in the grid array which corresponds one after the other to the coords of the coords array]
+    """[function addCoordToGrid. the function runs through each row of the coordinate table. it then adds 
+        an x in the grid array which corresponds one after the other to the coords of the coords array]
 
     Args:
         coord (array (2nd)): [array of the coords]
@@ -78,7 +79,7 @@ def lenBetweenTwoPoints(points1,points2):
 #question 3
 def lenBetweenAllPoints(coord):
     """[function lenBetweenAllPoints. the function calculte the disatance between all points and 
-    save data in a matrix which as a size of the number of coords]
+        save data in a matrix which as a size of the number of coords]
 
     Args:
         coord ([array 2nd]): [array of the coords]
@@ -120,7 +121,8 @@ def lenBetweenAllPoints(coord):
 
 #question 4
 def allPath(coord):
-    """[Function allPath. the function will calculate all possible path. it will exclude the paths that return to a destination already reached. for 8 points the function will calculate 8! path]
+    """[Function allPath. the function will calculate all possible path. it will exclude the paths that return to a destination 
+        already reached. for 8 points the function will calculate 8! path]
 
     Args:
         coord ([array 2nd]): [array of coord]
@@ -147,10 +149,6 @@ def allPath(coord):
                                                             if h!=g and h!=f and h!=e and h!=d and h!=c and h!=b and h!=a:
                                                                 path=[a,b,c,d,e,f,g,h]
                                                                 res.append(path)
-      
-
-                                                            
-            
     return res
 
 #question 6
@@ -282,10 +280,16 @@ def nearest(matrix):
     return path
 
 def affichage(grid):
-
-    res=''
+    res='|'
+    for i in range(len(grid[0])*2-1):
+        res+="-"
+    res+='|\n'
     for i in range (len(grid)):
-        res+="-".join(grid[i])+'\n'
+        res+="|"+" ".join(grid[i])+"|\n"
+    res+='|'
+    for i in range(len(grid[0])*2-1):
+        res+="-"
+    res+='|\n'
     return res
 
 #main
@@ -307,7 +311,7 @@ def main():
     #___shortest path___
     #naive version :
     minPath=shorterPath(path,matrix)
-    print(minPath)
+    #print(minPath)
 
     #recursive version :
     #path2=allPathR(allPathR2(coord))
@@ -323,7 +327,7 @@ def main():
 
     #add step to the grid and final display
     grid=addStepToGrid(grid, coord, minPath)
-    showGrid(grid)
+    #showGrid(grid)
 
     print(affichage(grid))
     
