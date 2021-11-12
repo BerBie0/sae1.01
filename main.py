@@ -227,6 +227,7 @@ def shorterPath(path, matrix):
         if i<res:
             res=i
             res3=path[a]
+    print(res)
     return res3
 
 #question 6
@@ -277,13 +278,21 @@ def nearest(matrix):
         lenNear += min
         a+=1
     lenNear += matrix[path[-1]-1][path[-1]-1] #Add the distance between the last town and the origin
-    #print(lenNear)
+    print(lenNear)
     return path
+
+def affichage(grid):
+
+    res=''
+    for i in range (len(grid)):
+        res+="-".join(grid[i])+'\n'
+    return res
 
 #main
 def main():
     #create random coord
     coord=randomCoord(createGrid(2,8))
+    coord=[[4, 4], [9, 37], [10, 8], [11, 40], [14, 29], [4, 35], [8, 16], [3, 16]]
 
     #create empty grid
     grid=createGrid(20,50)
@@ -298,8 +307,10 @@ def main():
     #___shortest path___
     #naive version :
     minPath=shorterPath(path,matrix)
+    print(minPath)
 
     #recursive version :
+    #path2=allPathR(allPathR2(coord))
     #minPath2=shorterPath(path2,matrix)
 
     #nearest version :
@@ -311,8 +322,12 @@ def main():
     #showGrid(matrix)
 
     #add step to the grid and final display
-    #grid=addStepToGrid(grid, coord, minPath)
-    #showGrid(grid)    
+    grid=addStepToGrid(grid, coord, minPath)
+    showGrid(grid)
+
+    print(affichage(grid))
+    
+    
 
 if __name__=="__main__":
     main()
