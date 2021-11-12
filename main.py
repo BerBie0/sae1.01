@@ -1,6 +1,7 @@
 #Il faut calculer a l'origine de [0,0]
 import random
 import math
+import time
 
 #question 2
 def createGrid(cols, rows):
@@ -297,13 +298,19 @@ def main():
 
     #___shortest path___
     #naive version :
+    start = time.time()
     minPath=shorterPath(path,matrix)
+    end = time.time()
+    print(end-start)
 
     #recursive version :
     #minPath2=shorterPath(path2,matrix)
 
     #nearest version :
-    #minPathNearest=nearest(matrix)
+    start2 = time.time()
+    minPathNearest=nearest(matrix)
+    end2 = time.time()
+    print(end2-start2)
 
     #___display intermediate___
     #showGrid(coord)
