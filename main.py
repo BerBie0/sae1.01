@@ -1,6 +1,7 @@
 #Il faut calculer a l'origine de [0,0]
 import random
 import math
+import time
 
 #question 2
 def createGrid(cols, rows):
@@ -147,10 +148,7 @@ def allPath(coord):
                                                             if h!=g and h!=f and h!=e and h!=d and h!=c and h!=b and h!=a:
                                                                 path=[a,b,c,d,e,f,g,h]
                                                                 res.append(path)
-      
-
-                                                            
-            
+    
     return res
 
 #question 6
@@ -284,26 +282,44 @@ def nearest(matrix):
 def main():
     #create random coord
     coord=randomCoord(createGrid(2,8))
-
+    
     #create empty grid
     grid=createGrid(20,50)
     grid=addCoordToGrid(coord,grid)
+    #showGrid(grid)
     
     #create matrix 8*8
     matrix=lenBetweenAllPoints(coord)
-
+    #print("Liste de Coordonnées: ",coord)
+    #showGrid(matrix)
+    
     #generate all path
+    #coord=[[1,2],[3,4]]
     path=allPath(coord)
+    path1=allPathR2(coord)
+    path2=allPathR(path1)
+    #print("Path:",path)
+    #print("Path 1:",path1)
+    #print("Path 2:",path2)
 
     #___shortest path___
     #naive version :
+    start_time = time.time()
     minPath=shorterPath(path,matrix)
+    end_time = time.time()
+    print("Temps d'execution naive:", end_time-start_time)
 
     #recursive version :
-    #minPath2=shorterPath(path2,matrix)
+    start_time = time.time()
+    minPath2=shorterPath(path2,matrix)
+    end_time = time.time()
+    print("Temps d'execution recursive:", end_time-start_time)
 
     #nearest version :
-    #minPathNearest=nearest(matrix)
+    start_time = time.time()
+    minPathNearest=nearest(matrix)
+    end_time = time.time()
+    print("Temps d'execution nearest:", end_time-start_time)
 
     #___display intermediate___
     #showGrid(coord)
@@ -316,4 +332,5 @@ def main():
 
 if __name__=="__main__":
     main()
+    
 
