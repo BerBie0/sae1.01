@@ -72,7 +72,8 @@ def lenBetweenTwoPoints(points1,points2):
     return math.sqrt((points1[0]-points2[0])**2 + (points1[1]-points2[1])**2)
 
 def lenBetweenAllPoints(coord):
-    """[function lenBetweenAllPoints. the function calculte the disatance between all points and save data in a matrix which as a size of the number of coords]
+    """[function lenBetweenAllPoints. the function calculte the disatance between all points and 
+    save data in a matrix which as a size of the number of coords]
 
     Args:
         coord ([array 2nd]): [array of the coords]
