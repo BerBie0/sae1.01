@@ -42,9 +42,8 @@ def showGrid(grid):
     Args:
         grid ([array 2nd]): [grid]
     """
-    rows=len(grid) #y
-    for y in range(rows):
-        print(grid[y])
+    for i in grid:
+        print(i)
 
 #question 2
 def addCoordToGrid(coord,grid):
