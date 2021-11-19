@@ -280,6 +280,11 @@ def nearest(matrix):
     return path
 
 def affichage(grid):
+    """[function affichage. The function display (grid) with the contour
+
+    Args:
+        grid ([array 2nd]): [grid]
+    """
     res='|'
     for i in range(len(grid[0])*2-1):
         res+="-"
