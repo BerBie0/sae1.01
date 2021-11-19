@@ -295,7 +295,7 @@ def affichage(grid):
     for i in range(len(grid[0])*2-1):
         res+="-"
     res+='|\n'
-    return res
+    print(res)
 
 #main
 def main():
@@ -334,7 +334,7 @@ def main():
     grid=addStepToGrid(grid, coord, minPath)
     #showGrid(grid)
 
-    print(affichage(grid))
+    affichage(grid)
     
     
 
