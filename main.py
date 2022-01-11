@@ -226,7 +226,7 @@ def shorterPath(path, matrix):
         if i<res:
             res=i
             res3=path[a]
-    #print(res)
+    print(res,"km for the shortest path")
     return res3
 
 #question 6
@@ -277,7 +277,7 @@ def nearest(matrix):
         lenNear += min
         a+=1
     lenNear += matrix[path[-1]-1][path[-1]-1] #Add the distance between the last town and the origin
-    #print(lenNear)
+    print(lenNear,"km for the nearest neighbor version")
     return path
 
 def affichage(grid):
@@ -321,6 +321,8 @@ def main():
     print("Execution time :",tn2-tn,"s")
        # add step to the grid and final display
     grid=addStepToGrid(grid, coord, minPath)
+        #Display grid
+    affichage(grid)
     
 
         # recursive version :
@@ -333,23 +335,24 @@ def main():
     # tn2 = time.perf_counter()
     # print("Execution time :",tn2-tn,"s")
     #    # add step to the grid and final display
-    # grid=addStepToGrid(grid, coord, minPath)
+    # grid2=addStepToGrid(grid, coord, minPath)
+    #    #Display grid
+    # affichage(grid2)
 
         #nearest version :
-    # tn = time.perf_counter()
-    # minPathNearest=nearest(matrix)
-    # tn2 = time.perf_counter()
-    # print("Execution time of the nearest neighbor version :",tn2-tn, "s")
-    #     # add step to the grid and final display
-    # grid=addStepToGrid(grid, coord, minPathNearest)
+    tn = time.perf_counter()
+    minPathNearest=nearest(matrix)
+    tn2 = time.perf_counter()
+    print("Execution time of the nearest neighbor version :",tn2-tn, "s")
+        # add step to the grid and final display
+    grid3=addStepToGrid(grid, coord, minPathNearest)
+        #Display grid
+    affichage(grid)
 
     #___display intermediate___
     #showGrid(coord)
     #showGrid(grid)
     #showGrid(matrix)
-
-    #Display grid
-    affichage(grid)
     
     
 
