@@ -302,7 +302,6 @@ def affichage(grid):
 def main():
     #create random coord
     coord=randomCoord(createGrid(2,8))
-    coord=[[4, 4], [9, 37], [10, 8], [11, 40], [14, 29], [4, 35], [8, 16], [3, 16]]
 
     #create empty grid
     grid=createGrid(20,50)
@@ -311,58 +310,46 @@ def main():
     #create matrix 8*8
     matrix=lenBetweenAllPoints(coord)
 
-    #generate all path
+        # naive version :
+
+       # generate all path :
     path=allPath(coord)
-
-    #___shortest path___
-    #naive version :
-    start = time.time()
-    start1 = time.perf_counter()
+       # ___shortest path___ :
+    tn = time.perf_counter()
     minPath=shorterPath(path,matrix)
-    end = time.time()
-    end1 = time.perf_counter()
-    print("Time (time.time()) for execution of shorterPath (fonction imbriquée): ",end-start)
-    print("Time (perf_counter()) for execution of shorterPath (fonction imbriquée): ",end1-start1)
+    tn2 = time.perf_counter()
+    print("Execution time :",tn2-tn,"s")
+       # add step to the grid and final display
+    grid=addStepToGrid(grid, coord, minPath)
+    
 
-    #recursive version :
-    path2=allPathR(allPathR2(coord))
-    #minPath2=shorterPath(path2,matrix)
+        # recursive version :
 
-    #nearest version :
-    # # start = time.time()
-    # # minPathNearest=nearest(matrix)
-    # # end = time.time()
-    # # print("Time for execution of nearest: ",end-start)
+    #    # generate all path :
+    # path2=allPathR(allPathR2(coord))
+    #    # ___shortest path___ :
+    # tn = time.perf_counter()
+    # minPath=shorterPath(path2,matrix)
+    # tn2 = time.perf_counter()
+    # print("Execution time :",tn2-tn,"s")
+    #    # add step to the grid and final display
+    # grid=addStepToGrid(grid, coord, minPath)
 
-    #version naive avec recursive :
-    start = time.time()
-    start1 = time.perf_counter()
-    minPath=shorterPath(path2,matrix)
-    end = time.time()
-    end1 = time.perf_counter()
-    print("Time (time.time()) for execution of shorterPath (recursive): ",end-start)
-    print("Time (perf_counter()) for execution of shorterPath (recursive): ",end1-start1)
-
-    #nearest version avec recursive :
-    start = time.time()
-    start1 = time.perf_counter()
-    minPathNearest=nearest(matrix)
-    end = time.time()
-    end1 = time.perf_counter()
-    print("Time (time.time()) for execution of nearest (recursive): ",end-start)
-    print("Time (perf_counter()) for execution of nearest (recursive): ",end1-start1)
+        #nearest version :
+    # tn = time.perf_counter()
+    # minPathNearest=nearest(matrix)
+    # tn2 = time.perf_counter()
+    # print("Execution time of the nearest neighbor version :",tn2-tn, "s")
+    #     # add step to the grid and final display
+    # grid=addStepToGrid(grid, coord, minPathNearest)
 
     #___display intermediate___
     #showGrid(coord)
     #showGrid(grid)
     #showGrid(matrix)
 
-    #add step to the grid and final display
-    grid=addStepToGrid(grid, coord, minPath)
-    #showGrid(grid)
-
     #Display grid
-    #affichage(grid)
+    affichage(grid)
     
     
 
