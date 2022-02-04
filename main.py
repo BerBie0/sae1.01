@@ -1,4 +1,3 @@
-#Il faut calculer a l'origine de [0,0]
 import random
 import math
 import time
@@ -298,6 +297,44 @@ def affichage(grid):
     res+='|\n'
     print(res)
 
+def naiveVersion(coord, grid, matrix):
+       # generate all path :
+    path=allPath(coord)
+       # ___shortest path___ :
+    tn = time.perf_counter()
+    minPath=shorterPath(path,matrix)
+    tn2 = time.perf_counter()
+    print("Execution time :",tn2-tn,"s")
+       # add step to the grid and final display
+    grid=addStepToGrid(grid, coord, minPath)
+        #Display grid
+    affichage(grid)
+
+def recursivVersion(coord,grid,matrix):
+    # recursive version :
+
+    #    # generate all path :
+    path2=allPathR(allPathR2(coord))
+    #    # ___shortest path___ :
+    tn = time.perf_counter()
+    minPath=shorterPath(path2,matrix)
+    tn2 = time.perf_counter()
+    print("Execution time :",tn2-tn,"s")
+    #    # add step to the grid and final display
+    grid2=addStepToGrid(grid, coord, minPath)
+    #    #Display grid
+    affichage(grid2)
+
+def nearestVersion(coord,grid,matrix):
+    tn = time.perf_counter()
+    minPathNearest=nearest(matrix)
+    tn2 = time.perf_counter()
+    print("Execution time of the nearest neighbor version :",tn2-tn, "s")
+        # add step to the grid and final display
+    grid3=addStepToGrid(grid, coord, minPathNearest)
+        #Display grid
+    affichage(grid)
+
 #main
 def main():
     #create random coord
@@ -310,49 +347,21 @@ def main():
     #create matrix 8*8
     matrix=lenBetweenAllPoints(coord)
 
-        # naive version :
-
-       # generate all path :
-    path=allPath(coord)
-       # ___shortest path___ :
-    tn = time.perf_counter()
-    minPath=shorterPath(path,matrix)
-    tn2 = time.perf_counter()
-    print("Execution time :",tn2-tn,"s")
-       # add step to the grid and final display
-    grid=addStepToGrid(grid, coord, minPath)
-        #Display grid
-    affichage(grid)
+    #naive version
+    print("VERSION NAIVE :\n")
+    naiveVersion(coord, grid, matrix)
+    print("\n\n")
     
+    #recursiv version
+    print("VERSION RECURSIV :\n")
+    recursivVersion(coord,grid,matrix)
+    print("\n\n")
+        
 
-        # recursive version :
-
-    #    # generate all path :
-    # path2=allPathR(allPathR2(coord))
-    #    # ___shortest path___ :
-    # tn = time.perf_counter()
-    # minPath=shorterPath(path2,matrix)
-    # tn2 = time.perf_counter()
-    # print("Execution time :",tn2-tn,"s")
-    #    # add step to the grid and final display
-    # grid2=addStepToGrid(grid, coord, minPath)
-    #    #Display grid
-    # affichage(grid2)
-
-        #nearest version :
-    tn = time.perf_counter()
-    minPathNearest=nearest(matrix)
-    tn2 = time.perf_counter()
-    print("Execution time of the nearest neighbor version :",tn2-tn, "s")
-        # add step to the grid and final display
-    grid3=addStepToGrid(grid, coord, minPathNearest)
-        #Display grid
-    affichage(grid)
-
-    #___display intermediate___
-    #showGrid(coord)
-    #showGrid(grid)
-    #showGrid(matrix)
+    #nearest version :
+    print("VERSION NEAREST :\n")
+    nearestVersion(coord,grid,matrix)
+    print("\n\n")
     
     
 
